@@ -6,6 +6,7 @@ import AIChatPanel from '../components/AIChatPanel'
 import ChatPanel from '../components/ChatPanel'
 import { useSelector } from 'react-redux'
 import { RootState } from '../store'
+import { WS_BASE } from '../api';  
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
@@ -17,19 +18,31 @@ export default function RoomPage() {
   const code = useSelector((s: RootState) => s.editor.code)
   const [username, setUsername] = useState<string>(() => `user-${Math.floor(Math.random()*999)}`)
 
-  useEffect(() => {
-    if (!roomId) return
-    const socket = new WebSocket(API_URL.replace('http', 'ws') + `/ws/${roomId}`)
-    setWs(socket)
-    socket.onmessage = (ev) => {
-      try {
-        const msg = JSON.parse(ev.data)
-        if (msg.type === 'presence') setUsers(msg.count || 1)
-        if (msg.type === 'chat') setLatestChat({ user: msg.user, text: msg.text })
-      } catch {}
-    }
-    return () => { socket.close(); setWs(null) }
-  }, [roomId])
+// frontend/src/pages/RoomPage.tsx
+// ✅ use the safe base
+
+// ...
+useEffect(() => {
+  if (!roomId) return;
+
+  const url = `${WS_BASE}/ws/${roomId}`;
+  const socket = new WebSocket(url);
+  setWs(socket);
+
+  socket.onopen = () => console.log('[ws] open', url);
+  socket.onclose = (e) => console.warn('[ws] close', e.code, e.reason);
+  socket.onerror = (e) => console.error('[ws] error', e);
+
+  socket.onmessage = (ev) => {
+    try {
+      const msg = JSON.parse(ev.data);
+      if (msg.type === 'presence') setUsers(msg.count || 1);
+      if (msg.type === 'chat') setLatestChat({ user: msg.user, text: msg.text });
+    } catch {}
+  };
+
+  return () => { socket.close(); setWs(null); };
+}, [roomId]);
 
   return (
     <div>
