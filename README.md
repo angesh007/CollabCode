@@ -1,20 +1,20 @@
-# 🚀 CollabCode — Real-time Pair Programming App
+# CollabCode — Real-time Pair Programming App
 
 **Live Demo:**  
-👉 [https://collabcode-web-410477008137.asia-south1.run.app/](https://collabcode-web-410477008137.asia-south1.run.app/)
+ [https://collabcode-web-410477008137.asia-south1.run.app/](https://collabcode-web-410477008137.asia-south1.run.app/)
 
 ---
 
-## 🧩 Overview
+##  Overview
 **CollabCode** is a real-time collaborative code editor with:
-- 🧑‍💻 Shared live coding (via WebSockets)
-- 🤖 AI assistant with OpenAI integration
-- 💬 Live room chat + user presence tracking
-- 🎨 Modern dark UI built with React + Tailwind + FastAPI backend
+- Shared live coding (via WebSockets)
+- AI assistant with OpenAI integration
+- Live room chat + user presence tracking
+- Modern dark UI built with React + Tailwind + FastAPI backend
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 **Frontend**
 - React + TypeScript + Vite  
 - Redux Toolkit for global state  
@@ -28,7 +28,7 @@
 
 ---
 
-## ⚙️ Backend Setup (Local)
+## Backend Setup (Local)
 
 ```bash
 cd backend
