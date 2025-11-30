@@ -56,14 +56,12 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 ```
 
-##How to Use
+## How to Use
 
--Create a Room → generates a unique room ID
-
--Share the URL (e.g. /room/:roomId) with another user
-
--Both users can edit the same code live
-
--Use the AI Assistant for autocompletion or questions
+- **Create a Room** → Generates a unique room ID  
+- **Share the URL** (e.g. `/room/:roomId`) with another user  
+- **Collaborate Live** → Both users can edit the same code in real-time  
+- **Use the AI Assistant** for autocompletion or coding questions  
+- **Chat in Real-Time** using the chat panel on the right  
 
 -Chat in real-time on the right panel
